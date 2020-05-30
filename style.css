@@ -33,7 +33,7 @@ body{
     image-rendering: crisp-edges;
     image-rendering: -moz-crisp-edges;
     border-width: 0px;
-    opacity: 0.5;
+    opacity: 0.3;
 
 }
 .value{
@@ -41,7 +41,7 @@ body{
     position: absolute;
     /*margin-top: 53vh;
     margin-left: 4vw;*/
-    font-size: 150%;
+    font-size: 100%;
 
 }
 
@@ -55,7 +55,7 @@ body{
 
     
     top: 22vh;
-    left: 92vw;
+    left: 88vw;
 
 }
 
@@ -68,7 +68,112 @@ body{
 #hungerValue{
 
     top: 39vh;
+    left: 88vw;
+
+}
+
+#genderMale{
+
+    top: 44vh;
+    left: 88vw;
+
+}
+#genderFemale{
+
+    top: 47vh;
+    left: 88vw;
+
+}
+
+#fruitSpawnRate{
+
+    position: absolute;
+    top: 52vh;
+    left: 90vw;
+    width: 3vw;
+
+}
+#fruitSpawnRateValue{
+
+    position: absolute;
+    top:  56vh;
+    left: 86vw;
+
+}
+
+button.btn{
+
+    background-color: #dddddd;
+    width: 5vh;
+    height: 5vh;
+    border-radius: 1vh;
+
+}
+
+#addSquare{
+
+    position: absolute;
+    top:  62vh;
+    left: 88vw;
+
+}
+#pause{
+
+    position: absolute;
+    top:  62vh;
     left: 92vw;
+
+}
+
+#maxHunger{
+
+    bottom: 7vh;
+    left: 1vw;
+
+}
+#maxHungerValue{
+
+    bottom: 2vh;
+    left: 1.5vw;
+
+}
+
+#speed{
+
+    bottom: 7vh;
+    left: 12vw;
+
+}
+#speedValue{
+
+    bottom: 2vh;
+    left: 12.5vw;
+
+}
+
+#range{
+
+    bottom: 7vh;
+    left: 23vw;
+
+}
+#rangeValue{
+
+    bottom: 2vh;
+    left: 23.5vw;
+
+}
+
+#minHunger{
+
+    bottom: 7vh;
+    left: 34vw;
+
+}
+#minHungerValue{
+
+    bottom: 2vh;
+    left: 34.5vw;
 
 }
 

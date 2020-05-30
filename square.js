@@ -1,54 +1,4 @@
-function createSquare( ){
-
-    function generateColor( maxHunger, speed, range ){
-
-        function RGBtoHEX(rgb) { 
-            var hex = Number(rgb).toString(16);
-            if (hex.length < 2) {
-                    hex = "0" + hex;
-            }
-            return hex;
-        };
-
-        function format( comp ){
-
-            if ( comp.length < 3 ) comp = '0'+comp;
-            if ( comp.length < 3 ) comp = '0'+comp;
-
-            return comp;
-        }
-
-        let color = '';
-
-        color += format(maxHunger/500*3);
-        color += format(speed/50*3);
-        color += format( range/100*3 );
-
-    }
-
-    const id = getNewId( 's' );
-    const x = Math.floor( Math.random( )*globalConstants.display.w );
-    const y = Math.floor( Math.random( )*globalConstants.display.h );
-    const w = 100;
-    const h = 100;
-    const range = 500;
-    const radar = createRadar( id, x+w/2, y+h/2, range );
-
-    function randomColor(){
-
-        var letters = '0123456789ABCDEF';
-        var color = '#';
-        for (var i = 0; i < 6; i++) {
-            color += letters[Math.floor(Math.random() * 16)];
-        }
-        return color;
-    }
-
-    const color = randomColor();
-
-    const square = createPhysicalObject( id, color, x, y, w, h, false, true );
-
-    radar.square = square;
+function createSquare( square1, square2 ){
 
     function initializeStatus( variable, value ){
 
@@ -56,11 +6,82 @@ function createSquare( ){
 
     }
 
-    initializeStatus( 'speed', 100 );       //gene 1 - green
+    function generateColor( maxHunger, speed, range ){
+
+        color = 'rgb(';
+
+        color += Math.abs(maxHunger/500*80)+',';
+        color += Math.abs(speed/30*80)+',';
+        color += Math.abs( range/300*80 )+')';
+
+    }
+
+    function reproduce( square1, square2 ){
+
+        const genes1 = [ square1.maxHunger, square1.speed, square1.range, square1.minHunger ];
+        const genes2 = [ square2.maxHunger, square2.speed, square2.range, square1.minHunger ];
+
+        if ( Math.random() > 0.5 ) maxHunger = genes1[0]
+        else maxHunger = genes2[0];
+        if ( Math.random() < 0.5 ) speed = genes1[1]
+        else speed = genes2[1];
+        if ( Math.random() > 0.5 ) range = genes1[2]
+        else range = genes2[2];
+        if ( Math.random() > 0.5 ) minHunger = genes1[3]
+        else minHunger = genes2[3];
+
+        if ( Math.random() > 0.5 ) maxHunger -= Math.floor( Math.random()*100 );
+        else maxHunger += Math.floor( Math.random()*100 );
+        if ( Math.random() > 0.5 ) speed -= Math.floor( Math.random()*10 );
+        else speed += Math.floor( Math.random()*10 );
+        if ( Math.random() > 0.5 ) range -= Math.floor( Math.random()*100 );
+        else range += Math.floor( Math.random()*100 );
+        if ( Math.random() > 0.5 ) minHunger -= Math.floor( Math.random()*100 );
+        else minHunger += Math.floor( Math.random()*100 );
+
+        x = square1.x;
+        y = square1.y;
+
+        square1.reproduction = 0;
+        square2.reproduction = 0;
+
+    }
+
+
+
+
+    const id = getNewId( 's' );
+    let x = Math.floor( Math.random( )*globalConstants.display.w );
+    let y = Math.floor( Math.random( )*globalConstants.display.h );
+
+    let color = 'black';
+    let gender = '';
+    let maxHunger = 500;
+    let minHunger = 0;
+    let speed = 30;
+    let range = 150;
+    const w = 100+minHunger*2;
+    const h = 100+minHunger*2;
+    if ( Math.random() > 0.5 ) gender = 'male'
+    else gender = 'female';
+
+    if ( square1 != undefined && square2 != undefined ) reproduce(square1, square2);
+
+    generateColor(maxHunger, speed, range);
+
+    const radar = createRadar( id, x+w/2, y+h/2, range );
+
+    const square = createPhysicalObject( id, color, x, y, w, h, false, true );
+
+    radar.square = square;
+
+    initializeStatus( 'speed', speed );       //gene 1 - green
     initializeStatus( 'range', range );     //gene 2 - blue
-    initializeStatus( 'maxHunger', 1000 );  //gene 3 - red
+    initializeStatus( 'maxHunger', maxHunger );  //gene 3 - red
+    initializeStatus( 'minHunger', minHunger );  //gene 4 - size
     initializeStatus( 'hunger', 0 );
     initializeStatus( 'reproduction', 0 );
+    initializeStatus( 'gender', gender );
     initializeStatus( 'fruit', undefined );
     initializeStatus( 'radar', radar );
     initializeStatus( 'objectType', 'square' );
@@ -68,6 +89,9 @@ function createSquare( ){
 
     return square;
 }
+
+
+
 
 function think( square, object ){
 
@@ -110,7 +134,7 @@ function think( square, object ){
 
     function search( square ){
 
-        if ( square.vx == 0 && square.vy == 0 ){
+        if ( square.vx == 0 || square.vy == 0 ){
 
             randomDirection(square);
 
@@ -139,6 +163,33 @@ function think( square, object ){
 
                 square.fruit = obj.name;
                 square.situation = 'going';
+
+            }
+
+        }
+        else if ( obj.objectType == 'square' ){
+
+            if ( square.gender != obj.gender && square.hunger < 250 && obj.hunger < 250 && square.reproduction >= 100 && obj.reproduction >= 100 ){
+
+                const CA = square.radar.x - obj.radar.x;
+                const CO = square.radar.y - obj.radar.y;
+                const distance = Math.sqrt( Math.pow( CA, 2 ) + Math.pow( CO, 2 ) );
+
+                if ( distance <= 250 ){
+
+                    if ( square.gender == 'female' ) createSquare( square, obj );
+
+                }
+                else{
+
+                    const v = square.speed;
+                    const cos = CA/distance;
+                    const sin = CO/distance;
+
+                    square.vx = -cos*v*0.8; 
+                    square.vy = sin*v*0.8;
+
+                }
 
             }
 
@@ -180,10 +231,11 @@ function think( square, object ){
 
 function eatFruit( square, fruit ){
 
-    if (square.hunger >= 20){
-        square.hunger = 0;
+    if (square.hunger >= 20 ){
+        square.hunger -= 200;
         delete physicalObjects[fruit.name];
         square.situation = 'searching';
+        if ( square.hunger < -square.minHunger ) square.hunger = -square.minHunger;
     }
 }
 
@@ -202,6 +254,8 @@ function status(){
 
             }
             else square.hunger ++
+
+            if ( square.reproduction < 100 ) square.reproduction++;
 
         }
 

@@ -1,6 +1,6 @@
 function createRadar( id, x, y, r, source ){
 
-    const radar =  createCircularPhysicalObject( 'radar'+id, 'rgba(0,0,0,0.0)', x, y, r, false, true );
+    const radar =  createCircularPhysicalObject( 'radar'+id, 'rgba(0,0,0,0.08)', x, y, r, false, true );
     radar.objectType = 'radar';
 
     return radar;
@@ -37,12 +37,12 @@ function updateRadarPositions(){
 function objectDetected( collision ){
 
     const square = collision.PhysicalObject1.square;
-    const fruit = collision.PhysicalObject2;
+    const obj = collision.PhysicalObject2;
 
-    if ( (fruit.x >= square.x && fruit.x <= square.x+square.w) && (fruit.y >= square.y && fruit.y <= square.y+square.h) ){
-        eatFruit( square, fruit ); 
+    if ( obj.objectType == 'fruit' && (obj.x >= square.x && obj.x <= square.x+square.w) && (obj.y >= square.y && obj.y <= square.y+square.h) ){
+        eatFruit( square, obj ); 
     }
     else
-        think( square, fruit );
+        think( square, obj );
 
 }

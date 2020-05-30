@@ -43,7 +43,7 @@ function searchObject( obj ){
 }
 
 //for ( let i = 1; i <= 50; i++ ) createFruit();
-//for ( let i = 1; i <= 10; i++ ) createSquare();
+for ( let i = 1; i <= 6; i++ ) createSquare();
 
 function updateCollisionHandlers(){    
     for ( let i in physicalObjects ){

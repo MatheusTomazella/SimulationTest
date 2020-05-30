@@ -21,7 +21,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
     
         <!-- JsPhysics -->
-        <script src="JsPhysics.js">     </script>
+        <script src="JsPhysicsEdit.js">     </script>
 
     </head>
 
@@ -56,6 +56,33 @@
         <canvas class="graph" id="hunger">    </canvas>
         <span class="value" id="hungerValue"> 0 </span>
 
+        <!-- Gender -->
+        <span class="value" id="genderMale"> 0 </span>
+        <span class="value" id="genderFemale"> 0 </span>
+
+        <!-- Fruit Spawn Rate -->
+        <input type="text" id="fruitSpawnRate">
+        <label class="value" id="fruitSpawnRateValue"> fruitSpawnRate: 5 </label>
+
+        <!-- Buttons -->
+        <button onclick= createSquare() class="btn" id="addSquare"> <i class="fa fa-plus" aria-hidden="true"></i> </button>
+        <button onclick= pause() class="btn" id="pause"> <i class="fa fa-pause" aria-hidden="true"></i> </button>
+
+        <!-- MaxHunger graph Canvas -->
+        <canvas class="graph" id="maxHunger">    </canvas>
+        <span class="value" id="maxHungerValue"> 0 </span>
+
+        <!-- Speed graph Canvas -->
+        <canvas class="graph" id="speed">    </canvas>
+        <span class="value" id="speedValue"> 0 </span>
+
+        <!-- Range graph Canvas -->
+        <canvas class="graph" id="range">    </canvas>
+        <span class="value" id="rangeValue"> 0 </span>
+
+        <!-- MinHunger graph Canvas -->
+        <canvas class="graph" id="minHunger">    </canvas>
+        <span class="value" id="minHungerValue"> 0 </span>
 
         <!-- Bootstrap Js -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>  
@@ -71,6 +98,9 @@
 
         <!-- Grafico Script -->
         <script src="grafico.js">    </script>
+
+        <!-- Control Script -->
+        <script src="control.js">    </script>
 
         <!-- Simulation Script -->
         <script src="simulation.js">    </script>

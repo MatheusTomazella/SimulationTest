@@ -16,9 +16,11 @@ function createFruit( ){
     return '';
 }
 
-let fruitSpawnRate = 12;
+let fruitSpawnRate = 5;
 function spawnFruit(){
 
     if ( Math.floor( Math.random()*fruitSpawnRate ) == 0 ) createFruit();
+
+    if ( male == 0 || female == 0 ) createSquare();
 
 }
