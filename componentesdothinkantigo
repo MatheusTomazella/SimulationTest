@@ -1,0 +1,76 @@
+if ( square == undefined ){
+
+        for ( let k in physicalObjects ){
+
+            if ( physicalObjects.objectType == 'square' ){
+
+                const square = physicalObjects[k];
+                console.log( square );
+                act( square );
+
+            }
+
+        }
+
+    }
+    else{
+
+        decide( square, object );
+
+    }
+
+    function decide( square, object ){
+
+
+
+    }
+
+
+
+
+
+
+
+
+               /* if ( obj.square == undefined ){
+
+                for ( let j in physicalObjects ){
+
+                    const obj2 = physicalObjects[j];
+                    const id = obj2.name.slice( obj2.name.length-2 );
+                    if ( obj.name.search( id ) != -1 ){
+
+                        obj.square = obj2;
+
+                    }
+
+                }
+
+            }*/
+
+
+
+
+
+
+const obj = collision.PhysicalObject1.square;
+    const obj2 = collision.PhysicalObject2;
+
+    const var1 = [ 'x', 'y', 'w', 'h', 'r' ];
+    const var2 = [ 'x', 'y', 'w', 'h', 'r' ];
+    let testX = 0;
+    let testY = 0;
+    let distX = 0;
+    let distY = 0;
+    let distance = 0;
+
+    if (obj2[var2[0]]       < obj[var1[0]])                    testX = obj[var1[0]];     
+    else if (obj2[var2[0]]  > obj[var1[0]]+obj[var1[2]])       testX = obj[var1[0]]+obj[var1[2]];   
+    if (obj2[var2[1]]       < obj[var1[1]])                    testY = obj[var1[1]];
+    else if (obj2[var2[1]]  > obj[var1[1]]+obj[var1[3]])       testY = obj[var1[1]]+obj[var1[3]];
+
+    distX = obj2[var2[0]]-testX;
+    distY = obj2[var2[1]]-testY;
+    distance = Math.sqrt( (distX*distX) + (distY*distY) );
+
+    if (distance <= obj2[var2[4]]){

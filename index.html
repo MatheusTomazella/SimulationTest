@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+
+        <title></title>
+
+        <!-- Stylesheets -->
+        <link rel="stylesheet" type="text/css" href="style.css">   
+        
+        <!-- Favicon -->
+        <link rel="shortcut icon" type="image/x-icon" href="">
+
+        <!-- Font Awesome -->
+        <script src="https://kit.fontawesome.com/500b73534a.js" crossorigin="anonymous"></script>
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    
+        <!-- JsPhysics -->
+        <script src="JsPhysics.js">     </script>
+
+    </head>
+
+    <body class="container col-12 m-0 p-0">
+
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-sm navbar-light">
+            <a class="navbar-brand" href="#">Simulação</a>
+            <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavId">
+                <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" target="_blank" href="https://github.com/matheustomazella/SimulationTest"><i class=" fab fa-github icon "></i> GitHub</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <hr class="my-0 col-12 p-0">
+
+
+        <!-- Simulation Canvas -->
+        <canvas id="simulation">    </canvas>
+
+        <!-- Population graph Canvas -->
+        <canvas class="graph" id="population">    </canvas>
+        <span class="value" id="populationValue"> 0 </span>
+
+        <!-- Hunger graph Canvas -->
+        <canvas class="graph" id="hunger">    </canvas>
+        <span class="value" id="hungerValue"> 0 </span>
+
+
+        <!-- Bootstrap Js -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>  
+
+        <!-- Simulation square functions -->
+        <script src="square.js">        </script>
+
+        <!-- Simulation fruit functions -->
+        <script src="fruit.js">         </script>
+
+        <!-- Simulation radar functions -->
+        <script src="radar.js">         </script>
+
+        <!-- Grafico Script -->
+        <script src="grafico.js">    </script>
+
+        <!-- Simulation Script -->
+        <script src="simulation.js">    </script>
+
+    </body>
+
+</html>

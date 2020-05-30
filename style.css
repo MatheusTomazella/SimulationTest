@@ -1,0 +1,74 @@
+body{
+
+    background-color: white;
+    margin: 0;
+    padding: 0;
+
+}
+
+#simulation{
+
+    height: 91vh;
+    width: 98.5vw;
+    /*margin-top: 10vh;
+    margin-left: 2vw;*/
+    padding: 0;
+    background-color: cyan;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    image-rendering: -moz-crisp-edges;
+    border-width: 0px;
+}
+
+.graph{
+
+    height: 12vh;
+    width: 10vw;
+    position: absolute;
+    /*margin-top: 10vh;
+    margin-left: 2vw;*/
+    padding: 0;
+    background-color: cyan;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    image-rendering: -moz-crisp-edges;
+    border-width: 0px;
+    opacity: 0.5;
+
+}
+.value{
+
+    position: absolute;
+    /*margin-top: 53vh;
+    margin-left: 4vw;*/
+    font-size: 150%;
+
+}
+
+#population{
+
+    top:10vh;
+    left: 88vw;
+
+}
+#populationValue{
+
+    
+    top: 22vh;
+    left: 92vw;
+
+}
+
+#hunger{
+
+    top: 27vh;
+    left: 88vw;
+
+}
+#hungerValue{
+
+    top: 39vh;
+    left: 92vw;
+
+}
+
